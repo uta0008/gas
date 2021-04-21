@@ -8,6 +8,7 @@
 ---
 #使い方
 
-1. Google DriveにGoogle Apps ScriptとGoogleスプレッドシートを作成してアプリケーションとして公開します
+1. Google DriveにGoogle Apps ScriptとGoogleスプレッドシートを作成した先にコード等を貼り付けます
 2. イベントを作成し、時間単位でスクリプトを実行します
+3. アプリケーションとして公開します
 
