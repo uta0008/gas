@@ -1,6 +1,6 @@
 { 
-"token_id" : "LINE Notify token ID(replase token id)", 
-"sheet_id": "Google spreadsheet ID(replase spreadsheet id)",
+"token_id" : "(LINE Notify で取得したtoken IDに置き換える)", 
+"sheet_id": "(Google spreadsheet IDに置き換える)",
 "col_history":  0,
 "col_title":  1,
 "col_url":  2,

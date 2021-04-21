@@ -30,16 +30,14 @@ function get_SpreadSheetValues(options) {
   const sheet = spreadsheet.getSheetByName(options.sheet_name);
   const values = sheet.getDataRange().getValues();
 
-  let judge_day = new Date(); 
-  judge_day.setDate(judge_day.getDate()-6); // 6日前
-  Logger.log('From "' + judge_day + '" to today.');
+  const sent_date = new Date(values[1][params.col_history]);
 
   let message = options.header;
   // 表題(i=0)は除く
   for (let i=1; i < values.length; i++)
   {
     var release_day = getDate(values[i][params.col_date],options.dateFormat);
-    if ( judge_day < release_day) 
+    if ( sent_date < release_day) 
     {
       const title = values[i][params.col_title]+"\n"; 
       const url = values[i][params.col_url]+"\n"; 
@@ -48,16 +46,9 @@ function get_SpreadSheetValues(options) {
   }
   message += options.footer;
 
-  let sent_date;
-  if(values[1][params.col_history] == "")
+  if(message != (options.header+options.footer))
   {
-    sent_date = judge_day;
-  }else
-  {
-    sent_date = new Date(values[1][params.col_history]);
-  }
-  if(message != (options.header+options.footer) && sent_date <= judge_day)
-  {
+    //通知日時を保存
     const now = new Date();
     sheet.getRange(2,1).setValue(now);
     Logger.log('send message. '+ now);
@@ -68,7 +59,6 @@ function get_SpreadSheetValues(options) {
   {
     Logger.log('Already sent.')
   }
- 
 }
 
 function getDate(value, type=0)

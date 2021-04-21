@@ -1,5 +1,5 @@
 function getParams() {
-    const contents = DriveApp.getFolderById('google drive folder id(replace folder id)')
+    const contents = DriveApp.getFolderById('(Google Drive のフォルダIDに置き換える)')
     .getFilesByName('param.json')
     .next()
     .getBlob()
